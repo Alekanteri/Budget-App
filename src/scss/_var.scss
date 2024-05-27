@@ -1,0 +1,39 @@
+//NOTE: font sizes
+
+$thin: 100;
+$light: 300;
+$regular: 400;
+$medium: 500;
+$bold: 700;
+
+//NOTE: Colors variables
+
+$primary-color: #0a7afc;
+$complete-color: #90d05a;
+$danger-color: #ef4444;
+$border-color: #cccccc;
+$muted-color: #9b9b9b;
+$bg-color: #f1f4f6;
+$el-color: #ffffff;
+$el-hover-color: #f8fafc;
+
+//NOTE: size breackpoints
+
+$phone-screen: 600px;
+$tablet-screen: 768px;
+$laptop-screen: 992px;
+$large-screen: 1200px;
+
+@mixin btn-default {
+  font-size: 16px;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+    color: $border-color;
+  }
+}

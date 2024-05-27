@@ -1,0 +1,8 @@
+@use "../../../scss/var" as var;
+
+.outlineBtn {
+  @include var.btn-default;
+  background-color: var.$el-color;
+  color: var.$primary-color;
+  border: 0.5px solid var.$border-color;
+}

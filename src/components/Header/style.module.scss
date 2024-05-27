@@ -1,0 +1,17 @@
+@use "../../scss/var" as var;
+
+.budgetHeader {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 0.75rem;
+
+  .headerTitle {
+    font-weight: var.$bold;
+  }
+
+  .headerBtns {
+    display: flex;
+    gap: 0.5rem;
+  }
+}

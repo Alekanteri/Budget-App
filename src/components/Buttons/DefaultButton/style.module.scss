@@ -1,0 +1,7 @@
+@use "../../../scss/var" as var;
+
+.defaultBtn {
+  @include var.btn-default;
+  background: var.$primary-color;
+  color: var.$el-color;
+}

@@ -1,0 +1,29 @@
+@use "../../scss/var" as var;
+
+.progressbar {
+  height: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+
+  &::-webkit-progress-bar {
+    background-color: var.$bg-color;
+    border-radius: 0.5rem;
+    height: 1rem;
+
+  }
+
+  &::-webkit-progress-value {
+    border-radius: 0.5rem;
+    height: 1rem;
+    transition: background-color 0.3s ease;
+  }
+}
+
+
+.complete::-webkit-progress-value {
+  background-color: var.$complete-color;
+}
+
+.inProgress::-webkit-progress-value {
+  background-color: var.$primary-color;
+}
