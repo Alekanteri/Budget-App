@@ -31,9 +31,5 @@ $large-screen: 1200px;
   border: none;
   border-radius: 0.3rem;
   cursor: pointer;
-
-  &:disabled {
-    cursor: default;
-    color: $border-color;
-  }
+  transition: all 0.2s ease;
 }

@@ -4,11 +4,14 @@ import { ButtonProps } from "../DefaultButton";
 
 export const OutlineButton: FC<ButtonProps> = ({
   children,
-  disabled,
+  expense,
   onClick,
 }): JSX.Element => {
   return (
-    <button onClick={onClick} className={styles.outlineBtn} disabled={disabled}>
+    <button
+      onClick={onClick}
+      className={`${styles.outlineBtn} ${expense ? styles.outlineExpenseBtn : ""}`}
+    >
       {children}
     </button>
   );

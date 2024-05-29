@@ -2,6 +2,11 @@
 
 .defaultBtn {
   @include var.btn-default;
-  background: var.$primary-color;
+  background-color: var.$primary-color;
   color: var.$el-color;
+
+  &:hover {
+    background-color: var.$el-color;
+    color: var.$primary-color;
+  }
 }

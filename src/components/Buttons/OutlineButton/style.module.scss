@@ -5,4 +5,18 @@
   background-color: var.$el-color;
   color: var.$primary-color;
   border: 0.5px solid var.$border-color;
+
+  &:hover {
+    background-color: var.$primary-color;
+    color: var.$el-color;
+  }
+}
+
+.outlineExpenseBtn {
+  color: var.$border-color;
+
+  &:hover {
+    background-color: var.$border-color;
+    color: var.$el-color;
+  }
 }

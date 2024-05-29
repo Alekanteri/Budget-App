@@ -52,6 +52,14 @@ export const BudgetProvider: FC<BudgetProviderProps> = ({ children }) => {
   };
 
   const deleteBudget: DeleteBudgetProps = (id) => {
+    setExpenses((prevExpenses: Array<ExpenseType>) => {
+      return prevExpenses.map((expense: ExpenseType) => {
+        if (expense.budgetId !== id) {
+          return expense;
+        }
+        return { ...expense, budgetId: UncategorizedId };
+      });
+    });
     setBudgets((prevBudgets: Array<BudgetType>) => {
       return prevBudgets.filter((budget: BudgetType) => budget.id !== id);
     });

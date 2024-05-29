@@ -5,12 +5,14 @@ import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { OutlineButton } from "../Buttons/OutlineButton/OutliteButton";
 import { ExpenseModal } from "../Modal/ExpenseModal";
 import { UncategorizedId } from "../../context/budgetContext";
+import { ViewExpensesModal } from "../Modal/ViewExpensesModal";
 
 interface CardProps {
   title: string;
   amount: number;
   max: number;
   budgetId: string;
+  unusedEl?: boolean;
 }
 
 export const Card: FC<CardProps> = ({
@@ -18,16 +20,28 @@ export const Card: FC<CardProps> = ({
   amount,
   max,
   budgetId,
+  unusedEl,
 }): JSX.Element => {
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] =
     useState<string>(UncategorizedId);
   const [isExpenseOpen, setIsExpenseOpen] = useState(false);
 
+  const [viewExpensesModalId, setViewExpensesModalId] = useState<string | null>(
+    null
+  );
+
+  const openViewExpenses = () => {
+    setViewExpensesModalId(budgetId);
+  };
+
   const openExpense = () => {
     setIsExpenseOpen(true);
     setAddExpenseModalBudgetId(budgetId);
   };
+
   const closeExpense = () => setIsExpenseOpen(false);
+
+  const closeViewExpenseModal = () => setViewExpensesModalId(null);
 
   return (
     <>
@@ -36,23 +50,33 @@ export const Card: FC<CardProps> = ({
           <div>{title}</div>
           <div>
             {formatter.format(amount)}{" "}
-            <span className={styles.cardTitleGoal}>
-              / {formatter.format(max)}
-            </span>
+            {max !== 0 && !unusedEl && (
+              <span className={styles.cardTitleGoal}>
+                / {formatter.format(max)}
+              </span>
+            )}
           </div>
         </div>
         <div>
           <ProgressBar value={amount} max={max} />
         </div>
-        <div className={styles.cardButtons}>
-          <OutlineButton onClick={openExpense}>Add Expense</OutlineButton>
-          <OutlineButton disabled>View Expenses</OutlineButton>
-        </div>
+        {!unusedEl && (
+          <div className={styles.cardButtons}>
+            <OutlineButton onClick={openExpense}>Add Expense</OutlineButton>
+            <OutlineButton onClick={openViewExpenses} expense>
+              View Expenses
+            </OutlineButton>
+          </div>
+        )}
       </div>
       <ExpenseModal
         show={isExpenseOpen}
         onClose={closeExpense}
         defaultBudgetId={addExpenseModalBudgetId}
+      />
+      <ViewExpensesModal
+        budgetId={viewExpensesModalId}
+        onClose={closeViewExpenseModal}
       />
     </>
   );
